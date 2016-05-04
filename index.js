@@ -1,10 +1,11 @@
-/**
+/*
+/!**
  * Created by Sumit on 4/23/2016.
- */
-/* value types and operators*/
+ *!/
+/!* value types and operators*!/
 (function () {
     'use strict'
-    /*refactor for odd grids
+    /!*refactor for odd grids
      function constructString(s, e, size) {
      var str = '',
      i   = 0;
@@ -28,7 +29,7 @@
      return str;
      }
 
-     console.log(displayGrid(6));*/
+     console.log(displayGrid(6));*!/
 
     var flag = true;
 
@@ -59,14 +60,14 @@
     }
 
     // window.console.log(gridFull(3));
-    /*chapter functions*/
-    /*1. minimum*/
+    /!*chapter functions*!/
+    /!*1. minimum*!/
     function min(a, b) {
         return a < b ? a : b;
     }
 
     function isEven(n) {
-        /*expand for floating point*/
+        /!*expand for floating point*!/
         if (n === 0) {
             return true;
         }
@@ -115,7 +116,7 @@
     var test = getArray(1, 15, 2);
     //var testa = getArray(15, 1, -1);
     //console.log((testa))
-    /*configure for reverse array*/
+    /!*configure for reverse array*!/
 
     function reverseArray(arr) {
         var res = [];
@@ -176,23 +177,28 @@
         return list;
     }
 
-    function append(list, pos) {
+    function append(l, pos) {
         var count = 0;
         var ref   = {value: "dummy", list: ''}
-        var test  = list.list
-        while (test && ++count <= pos) {
-            if (count === pos - 1) {
+        var test  = l;
+        var temp;
+        while (test) {
+            ++count;
+            if (count == (pos - 1)) {
+                ref.list  = test.list;
                 test.list = ref;
+                break;
             }
-            if (count == pos) {
-                ref.list = test;
-            }
-            test = test.list;
         }
+
         return list;
     }
 
-    var atoList = arrayToList(test);
-    console.log((atoList));
-    console.log(append(atoList, 2));
+    //var atoList = arrayToList(test);
+    //console.log((atoList));
+    //console.log(append(atoList, 2));
+    function deepCompare(a,b){
+
+    }
 }());
+*/
