@@ -1,0 +1,8 @@
+@mixin
+.linear-gradient-Two-Color(@direction,@startColor,@endColor) {
+  background: @startColor; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(@direction,@startColor,@endColor); /*Safari 5.1-6*/
+  background: -o-linear-gradient(@direction,@startColor,@endColor); /*Opera 11.1-12*/
+  background: -moz-linear-gradient(@direction,@startColor,@endColor); /*Fx 3.6-15*/
+  background: linear-gradient(to @direction, @startColor, @endColor); /*Standard*/
+}
