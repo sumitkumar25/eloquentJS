@@ -1,6 +1,7 @@
 /**
  * Created by Sumit on 5/5/2016.
  */
+
 var ANCESTRY_FILE = "[\n  " + [
         '{"name": "Carolus Haverbeke", "sex": "m", "born": 1832, "died": 1905, "father": "Carel Haverbeke", "mother": "Maria van Brussel"}',
         '{"name": "Emma de Milliano", "sex": "f", "born": 1876, "died": 1956, "father": "Petrus de Milliano", "mother": "Sophia van Damme"}',
@@ -42,3 +43,125 @@ var ANCESTRY_FILE = "[\n  " + [
         '{"name": "Maria Sturm", "sex": "f", "born": 1835, "died": 1917, "father": "Charles Sturm", "mother": "Seraphina Spelier"}',
         '{"name": "Jacobus Bernardus van Brussel", "sex": "m", "born": 1736, "died": 1809, "father": "Jan van Brussel", "mother": "Elisabeth Haverbeke"}'
     ].join(",\n  ") + "\n]";
+// demo array inbuilt filter
+
+var resFilter = (JSON.parse(ANCESTRY_FILE)).filter(function (item) {
+    return (item.sex === "m")
+});
+//console.log(resFilter.length);
+//console.log(ANCESTRY_FILE);
+
+// implementing filter
+var ANCESTRY_FILE_ARRAY = JSON.parse(ANCESTRY_FILE);
+function testFilter(item) {
+    if (item.sex === "m") {
+        return item;
+    }
+}
+function fnFilter(arr, test) {
+    var res = [];
+    for (var i = 0; i < arr.length; i++) {
+        var testResult = test(arr[i]);
+        if (testResult) {
+            res.push(testResult);
+        }
+    }
+    return res;
+}
+//console.log(fnFilter(ANCESTRY_FILE_ARRAY, testFilter));
+
+// demo array inbuilt map
+var testMap = ANCESTRY_FILE_ARRAY.map(function (item) {
+    if (item.died !== undefined && !isNaN(item.died)) {
+        return {name: item.name, dead: "y"};
+    }
+});
+//console.log(testMap)
+
+// implementing map
+function fnTestMap(item) {
+    if (item.died !== undefined && !isNaN(item.died)) {
+        return {name: item.name, dead: "y"};
+    }
+}
+function fnMap(arr, test) {
+    var res = [];
+    for (var i = 0; i < arr.length; i++) {
+        var testResult = test(arr[i]);
+        if (testResult) {
+            res.push(testResult);
+        }
+    }
+    return res;
+}
+//console.log(fnMap(ANCESTRY_FILE_ARRAY,fnTestMap));
+// testing reduce
+var testReduce = ANCESTRY_FILE_ARRAY.reduce(function (prev, curr) {
+    if (prev.born < curr.born) {
+        return prev;
+    }
+    else {
+        return curr;
+    }
+});
+//console.log(testReduce)
+//implement reduce
+function fnReduce(arr, test) {
+    var minAge = arr[0];
+    for (var i = 1; i < arr.length; i++) {
+        minAge = test(minAge, arr[i]);
+    }
+    return minAge
+}
+function fnTestReduce(prev, curr) {
+    if (prev.born < curr.born) {
+        return prev;
+    }
+    else {
+        return curr;
+    }
+}
+//console.log(testReduce)
+//console.log(fnReduce(ANCESTRY_FILE_ARRAY,fnTestReduce));
+
+/*exercises*/
+//1) flatten an array
+var test = [1, 2, 3, 4, 5, 6, 'a', 4567, [1, 2, 3, 4, 5, 6, 7, 8, 9], 'a']
+
+function reduceArray(arr) {
+    return arr.reduce(function (p, c) {
+        if (Array.isArray(p)) {
+            p = reduceArray(p)
+        }
+        if (Array.isArray(c)) {
+            c = reduceArray(c)
+        }
+        return (p.toString()).concat(c.toString());
+    });
+}
+console.log(reduceArray(test));
+
+//implementing every and some.
+var eTest = [11, 2, 3, 4, 5, 6, 7]
+function everyTest(test) {
+    if (test > 10) {
+        return true;
+    }
+}
+function everyArray(arr, fn) {
+    for (var i = 0; i < arr.length; i++) {
+        if (!fn(arr[i])) {
+            return false
+        }
+    }
+    return true;
+}
+function someArray(arr, fn) {
+    for (var i = 0; i < arr.length; i++) {
+        if (fn(arr[i])) {
+            return true
+        }
+    }
+    return false;
+}
+//console.log(everyArray(eTest, everyTest));
