@@ -139,7 +139,7 @@ function reduceArray(arr) {
         return (p.toString()).concat(c.toString());
     });
 }
-console.log(reduceArray(test));
+//console.log(reduceArray(test));
 
 //implementing every and some.
 var eTest = [11, 2, 3, 4, 5, 6, 7]
@@ -165,3 +165,21 @@ function someArray(arr, fn) {
     return false;
 }
 //console.log(everyArray(eTest, everyTest));
+/*.................................................................................*/
+/*.................................................................................*/
+/*                                 Redoing  complete chapter                       */
+/*.................................................................................*/
+/*.................................................................................*/
+var topicID = 0;
+function op(arg) {
+    console.log(arg);
+};
+op("topic " + (++topicID) + " : using forEach");
+/*using forEach*/
+var varForEach = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+function demoForEach(obj, fn) {
+    obj.forEach(function (item, i) {
+        fn(item);
+    });
+}
+demoForEach(varForEach, op);

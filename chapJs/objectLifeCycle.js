@@ -114,28 +114,12 @@ function configureData(data, widthArray) {
 //var test = configureData(table,widthArray);
 //test.toString();
 
-var testGetSet         = {
-    name: "getter and setter using object literal",
-    get: function () {
-        return this.name;
-    },
-    set: function (value) {
-        this.name = value;
-    }
+/*creating table final*/
+// INTERFACE
+
+function minH() {
 }
-var testGetSetFunction = Object.create(null, {
-    name: {
-        value: "get and set using Object .create",
-        writable: true,
-        enumerable: true,
-        configurable: true
-    },
-    bar:{
-        get function() {
-            return this.name
-        },
-        set function(value) {
-            this.name = this.name + value;
-        }
-    }
-})
+function minW() {
+}
+function draw(height, width) {
+}
